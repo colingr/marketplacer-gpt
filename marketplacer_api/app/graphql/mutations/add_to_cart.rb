@@ -17,6 +17,10 @@ module Mutations
       )
 
       if cart_item.save
+        # Update the cart's total cost
+        cart.total_cost += (product.price * quantity)
+        cart.save
+
         {
           cart_item: cart_item,
           errors: []

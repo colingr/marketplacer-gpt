@@ -6,10 +6,12 @@ module Types
       Product.all
     end
 
-    field :cart, Types::CartType, null: false
+    field :cart, Types::CartType, null: true do
+      argument :id, ID, required: false
+    end
 
-    def cart
-      Cart.first_or_create!(total_cost: 0.0)
+    def cart(id: nil)
+      id ? Cart.find(id) : (Cart.first || Cart.create)
     end
   end
 end

@@ -1,0 +1,15 @@
+POST http://localhost:3000/graphql
+
+mutation {
+  addToCart(input: { productId: 1, quantity: 2 }) {
+    cartItem {
+      id
+      product {
+        name
+        price
+      }
+      quantity
+    }
+    errors
+  }
+}

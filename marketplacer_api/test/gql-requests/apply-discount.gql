@@ -1,0 +1,11 @@
+POST http://localhost:3000/graphql
+
+mutation {
+  applyDiscount(input: { cartId: 1 }) {
+    cart {
+      id
+      totalCost
+    }
+    errors
+  }
+}
